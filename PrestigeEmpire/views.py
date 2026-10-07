@@ -1,19 +1,17 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import SiteContent, Video
+
 
 def home(request):
-    return render(request, 'PrestigeEmpire/home.html')
+    content, _ = SiteContent.objects.get_or_create(pk=1)
+    videos = Video.objects.filter(is_published=True)
+    return render(request, "PrestigeEmpire/home.html", {"content": content, "videos": videos})
 
 
 def robots(request):
-    return HttpResponse('User-agent: *\nAllow: /\nSitemap: https://prestigechampagne.cd/sitemap.xml\n', content_type='text/plain')
+    return HttpResponse("User-agent: *\\nAllow: /\\n", content_type="text/plain")
 
 
 def sitemap(request):
-    return HttpResponse(
-        '<?xml version="1.0" encoding="UTF-8"?>\n'
-        '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'
-        '<url><loc>https://prestigechampagne.cd/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>'
-        '</urlset>',
-        content_type='application/xml',
-    )
+    return HttpResponse("", content_type="application/xml")

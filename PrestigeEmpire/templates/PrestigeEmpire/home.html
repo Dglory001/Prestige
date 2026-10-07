@@ -1,29 +1,11 @@
-{% load static %}
-<!doctype html>
-<html lang="fr">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Prestige Champagne, distributeur à Kinshasa du Ruinart Blanc de Blancs en coffret de 3 bouteilles avec pochettes.">
-  <meta name="theme-color" content="#17140f">
-  <meta property="og:title" content="Prestige Champagne | Ruinart Blanc de Blancs à Kinshasa">
-  <meta property="og:description" content="L'élégance du Ruinart Blanc de Blancs, proposée exclusivement en coffret de trois bouteilles.">
-  <meta property="og:type" content="website">
-  <title>Prestige Champagne | Ruinart Blanc de Blancs à Kinshasa</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'css/site.css' %}">
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Prestige Champagne","description":"Ruinart Blanc de Blancs en coffret de 3 bouteilles à Kinshasa.","address":{"@type":"PostalAddress","addressLocality":"Kinshasa","addressCountry":"CD"},"foundingDate":"2025"}</script>
-</head>
-<body>
-  <header class="site-header">
-    <a class="brand" href="#accueil" aria-label="Prestige Champagne accueil"><span class="brand-mark">P</span><span>PRESTIGE<small>CHAMPAGNE</small></span></a>
-    <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
-    <nav><a href="#maison">La maison</a><a href="#coffret">Le coffret</a><a href="#contact">Contact</a></nav>
-  </header>
+{% extends "PrestigeEmpire/base.html" %}
+{% load static%}
+{% block content %}
 
-  <main id="accueil">
+
+
+
+ <main id="accueil">
     <section class="hero">
       <div class="hero-copy reveal">
         <p class="eyebrow">Kinshasa · Depuis 2025</p>
@@ -31,28 +13,31 @@
         <p class="intro">Prestige Champagne vous propose exclusivement le Ruinart Blanc de Blancs, dans un coffret pensé pour les célébrations qui comptent.</p>
         <a class="button" href="#coffret">Découvrir le coffret <span>→</span></a>
       </div>
-      <div class="hero-art" aria-label="Coffret Prestige Champagne de trois bouteilles">
-        <div class="halo"></div><div class="spark s1">✦</div><div class="spark s2">✦</div>
-        <div class="bottle bottle-one"><i></i><b>RUINART</b><small>BLANC DE BLANCS</small></div>
-        <div class="bottle bottle-two"><i></i><b>RUINART</b><small>BLANC DE BLANCS</small></div>
-        <div class="bottle bottle-three"><i></i><b>RUINART</b><small>BLANC DE BLANCS</small></div>
-        <p class="art-caption">Le coffret signature<br>de Prestige Champagne</p>
-      </div>
+      <div class="hero-art hero-art--photo">
+  <img
+    class="hero-coffret-image"
+    src="{% if content.coffret_image %}{{ content.coffret_image.url }}{% else %}{% static 'images/coffret-ruinart-detoure.png' %}{% endif %}"
+    alt="Coffret Prestige Champagne de trois bouteilles Ruinart Blanc de Blancs"
+  >
+</div>
       <div class="scroll-note">DÉCOUVRIR <span></span></div>
     </section>
 
     <section class="statement" id="maison"><p class="eyebrow">Une seule signature</p><h2>La pureté du chardonnay.<br><em>Le goût de l’exception.</em></h2><p>Nous avons fait le choix de ne proposer qu’une seule cuvée : le Ruinart Blanc de Blancs. Une sélection exigeante, importée de France pour sublimer vos instants à Kinshasa.</p></section>
 
     <section class="product" id="coffret">
-      <div class="product-visual"><div class="gift-box"><span>PRESTIGE<br><small>CHAMPAGNE</small></span><i></i></div></div>
+      <div class="product-visual"><img class="coffret-image" src="{% if content.coffret_image %}{{ content.coffret_image.url }}{% else %}{% static 'images/coffret-ruinart-detoure.png' %}{% endif %}" alt="Coffret Prestige Champagne"></div>
       <div class="product-copy"><p class="eyebrow">L’offre Prestige</p><h2>Le coffret<br><em>des instants rares.</em></h2><p>Trois bouteilles de Ruinart Blanc de Blancs, accompagnées de leurs pochettes, réunies dans une présentation à la hauteur de vos réceptions, cadeaux et célébrations.</p><ul><li><span>01</span> 3 bouteilles Ruinart Blanc de Blancs</li><li><span>02</span> Pochettes de présentation incluses</li><li><span>03</span> Provenance France</li></ul><a class="text-link" href="#contact">Demander le tarif et la disponibilité <span>→</span></a></div>
     </section>
 
-    <section class="moments"><p class="eyebrow">Pour marquer l’instant</p><div><h2>Offrir, recevoir,<br><em>célébrer.</em></h2><p>Un geste d’élégance pour les rendez-vous professionnels, les moments intimes et les occasions extraordinaires.</p></div></section>
+    <section class="moments" id="videos"><div class="moments-video">{% if videos %}{% for item in videos %}<article class="video-card"><video controls preload="metadata" playsinline><source src="{{ item.video.url }}">Votre navigateur ne prend pas en charge la vidéo.</video><h3>{{ item.title }}</h3></article>{% endfor %}{% else %}<p class="eyebrow">L’univers Prestige</p>{% endif %}</div><div><p class="eyebrow">Pour marquer l’instant</p><h2>Offrir, recevoir,<br><em>célébrer.</em></h2><p>Un geste d’élégance pour les rendez-vous professionnels, les moments intimes et les occasions extraordinaires.</p></div></section>
+
+
 
     <section class="contact" id="contact"><p class="eyebrow">Prestige Champagne · Kinshasa</p><h2>Votre moment<br><em>commence ici.</em></h2><p>Pour connaître nos disponibilités ou réserver votre coffret, contactez-nous.</p><a class="button light" href="mailto:contact@prestigechampagne.cd?subject=Demande%20de%20coffret%20Ruinart">Nous contacter <span>→</span></a><p class="contact-hint">Un conseiller Prestige vous répondra dans les meilleurs délais.</p></section>
   </main>
-  <footer><a class="brand" href="#accueil"><span class="brand-mark">P</span><span>PRESTIGE<small>CHAMPAGNE</small></span></a><p>Ruinart Blanc de Blancs · Kinshasa</p><p>© 2026 Prestige Champagne</p></footer>
-  <script src="{% static 'js/site.js' %}"></script>
-</body>
-</html>
+
+
+
+  {% endblock%} 
+

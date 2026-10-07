@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Prestige Champagne, distributeur à Kinshasa du Ruinart Blanc de Blancs en coffret de 3 bouteilles avec pochettes.">
+  <meta name="theme-color" content="#17140f">
+  <meta property="og:title" content="Prestige Champagne | Ruinart Blanc de Blancs à Kinshasa">
+  <meta property="og:description" content="L'élégance du Ruinart Blanc de Blancs, proposée exclusivement en coffret de trois bouteilles.">
+  <meta property="og:type" content="website">
+  <title>Prestige Champagne | Ruinart Blanc de Blancs à Kinshasa</title>
+  
+    {% include 'layout/link.html' %} 
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Prestige Champagne","description":"Ruinart Blanc de Blancs en coffret de 3 bouteilles à Kinshasa.","address":{"@type":"PostalAddress","addressLocality":"Kinshasa","addressCountry":"CD"},"foundingDate":"2025"}</script>
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="brand" href="#accueil" aria-label="Prestige Champagne accueil"><span class="brand-mark">P</span><span>PRESTIGE<small>CHAMPAGNE</small></span></a>
+    <button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button>
+    <nav><a href="#maison">La maison</a><a href="#coffret">Le coffret</a><a href="#contact">Contact</a></nav>
+  </header>
+
+ 
+
+
+  {%block content%}
+ 
+  {%endblock%}
+
+  {% include 'layout/src_js.html' %}
+
+</body>
+</html>

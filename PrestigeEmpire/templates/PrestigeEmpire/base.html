@@ -1,0 +1,18 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Prestige Champagne, Ruinart Blanc de Blancs à Kinshasa.">
+  <title>{% block title %}Prestige Champagne{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/site.css' %}">{% block extra_head %}{% endblock %}
+</head>
+<body>
+  <header class="site-header"><a class="brand brand-logo" href="/"><span class="brand-mark">P</span><span>PRESTIGE<small>CHAMPAGNE</small></span></a><button class="menu-toggle" aria-label="Ouvrir le menu" aria-expanded="false">Menu</button><nav><a href="/#maison">La maison</a><a href="/#coffret">Le coffret</a><a href="/#videos">Vidéos</a><a href="/#contact">Contact</a></nav></header>
+  {% block content %}{% endblock %}
+  <footer><a class="brand brand-logo" href="/"><span class="brand-mark">P</span><span>PRESTIGE<small>CHAMPAGNE</small></span></a><p>Ruinart Blanc de Blancs · Kinshasa</p><p>© {% now "Y" %} Prestige Champagne</p></footer>
+  <script src="{% static 'js/site.js' %}"></script>
+</body>
+</html>
